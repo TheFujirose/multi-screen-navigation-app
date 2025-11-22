@@ -1,0 +1,45 @@
+/**
+ * @fileoverview The Home Screen of the application
+ * @author Horia Humaila
+ * @author Carson Fujita
+ * @version 1.0.0
+ * @license GPL-3.0-or-later
+ */
+import React from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { Text, Button, StyleSheet } from 'react-native';
+
+const HomeScreen = ({ navigation }) => {
+        return (
+                <SafeAreaView style={styles.container}>
+                        <Text style={styles.title}>Home Screen</Text>
+                        <Button
+                                title="Go to Details"
+                                onPress={() =>
+                                        navigation.navigate('Details', {
+                                                itemId: 42,
+                                                itemName: 'Sample Item',
+                                        })
+                                }
+                        />
+                        <Button
+                                title="Go to Profile"
+                                onPress={() => navigation.navigate('Profile')}
+                        />
+                </SafeAreaView>
+        );
+};
+const styles = StyleSheet.create({
+        container: {
+                flex: 1,
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: 20,
+        },
+        title: {
+                fontSize: 24,
+                fontWeight: 'bold',
+                marginBottom: 20,
+        },
+});
+export default HomeScreen;

@@ -1,0 +1,96 @@
+\documentclass{article}
+\usepackage[a4paper, margin=1in]{geometry} % change margins
+\usepackage{minted} % code highlight and syntax
+\usepackage[dvipdfm]{graphicx} % graphics for images
+\usepackage[T1]{fontenc}
+\usepackage{float} % for [H]
+\begin{document}
+This document is a lab report that documents reflection material 
+
+\section{Screenshots}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[height=\textheight]{./screenshots/home.pdf}
+	\caption{Home Screen with stack navigator \label{fig:a}}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[height=\textheight]{./screenshots/details.pdf}
+	\caption{Details screen showing received parameters \label{fig:b}}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[height=\textheight]{./screenshots/profile.pdf}
+	\caption{Tab navigation showing all tabs\label{fig:c}}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[height=\textheight]{./screenshots/search.pdf}
+	\caption{Search screen active \label{fig:d}}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[height=\textheight]{./screenshots/settings.pdf}
+	\caption{Settings screen with switches \label{fig:e}}
+\end{figure}
+	% \inputminted[firstline=33,lastline=41]{python}{../project/project/settings.py}
+\section{Navigation Implementation}
+Navigation set up is structured with a Stack Navigation that has a nested Tab Navigation on the home page. To do this I had to set up the stack first.
+
+\begin{figure}[H]
+	\centering
+	\inputminted[firstline=16,lastline=36]{react}{../MultiScreenApp/src/navigation/StackNavigator.js}
+	\caption{Segment of StackNavigation.js \label{fig:f}}
+\end{figure}
+
+
+In the above Figure \ref{fig:f} the \emph{TabNavigator} is set as the component; effectively nesting the tab navigation within the \emph{StackNavigation} component. Within Figure \ref{fig:a} you can see the home page and it's tabs, then navigate throughout the stack (seen in Figure \ref{fig:b}).
+
+\subsection{Icons}
+Icon management had to be done with \emph{@react-native-vector-icons/material-icons} 
+
+\begin{figure}[H]
+	\centering
+	\inputminted[firstline=8,lastline=9]{jsx}{../MultiScreenApp/src/navigation/TabNavigator.js}
+	...
+	\inputminted[firstline=20,lastline=38]{jsx}{../MultiScreenApp/src/navigation/TabNavigator.js}
+	\caption{Segment of TabNavigator.js \label{fig:g}}
+\end{figure}
+
+In the above Figure \ref{fig:g}, Icons using \emph{MaterialIcons} are set up using a function that switches between icons based on the route then returns an icon component. Typically you need to handle passing paramters in nested components differently, but since we have all the primary navigation on the tab and links to things to the stack it wasn't really needed. If needed the figure below shows a snippet of the code.
+
+\begin{figure}[H]
+	\centering
+	\inputminted[firstline=16, lastline=24]{jsx}{../MultiScreenApp/src/screens/HomeScreen.js}
+	\caption{Segment of HomeScreen.js \label{fig:h}}
+\end{figure}
+
+\section{Challenges and Learning}
+I had to nest the navigation since you can only have one root navigation as seen in the above figure \ref{fig:f}. I also had to modify the manifest to opt-out of predicitive back on android since React Navigation doesn't yet support it.
+
+\inputminted[firstline=14, lastline=14]{xml}{../MultiScreenApp/android/app/src/main/AndroidManifest.xml}
+
+then I had to modify some code so \emph{react-native-screens} can properly work
+\begin{figure}[H]
+	\inputminted[firstline=11, lastline=12]{kotlin}{../MultiScreenApp/android/app/src/main/java/com/multiscreenapp/MainActivity.kt}
+	...
+	\inputminted[firstline=22, lastline=25]{kotlin}{../MultiScreenApp/android/app/src/main/java/com/multiscreenapp/MainActivity.kt}
+	\caption{Segment of MainActivity.ly \label{fig:j}}
+\end{figure}
+
+that was pretty much it. Oh, and updating to use \emph{react-native-safe-area-context}, but I have covered that in previous labs.
+
+\section{Testing and Verification}
+
+I didn't need to test much since the only problem I had was the above mentioned and accidentally deleting part of the \emph{AndroidManifest.xml} when opting-out of predicitive back; only took me about 2 hours to realize (not a brag). I did verify navigation passing by just seeing if the details page (in figure \ref{fig:b}) actually loaded from the segment in figure \ref{fig:f}. 
+
+\section{diagram}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{./diagram.pdf}
+	\caption{Navigation Flow}
+\end{figure}
+
+\end{document}
