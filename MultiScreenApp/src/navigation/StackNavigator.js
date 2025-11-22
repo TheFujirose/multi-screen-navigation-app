@@ -1,5 +1,5 @@
 /**
- * @fileoverview A React Navigation Stack Navigation
+ * @fileoverview
  * @author Horia Humaila
  * @author Carson Fujita
  * @version 1.0.0
@@ -10,6 +10,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from '../screens/HomeScreen';
 import DetailsScreen from '../screens/DetailsScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import SettingsScreen from '../screens/SettingsScreen';
+import TabNavigator from './TabNavigator';
 const Stack = createStackNavigator();
 const StackNavigator = () => {
         return (
@@ -26,8 +28,12 @@ const StackNavigator = () => {
                         }}>
                         <Stack.Screen
                                 name="Home"
-                                component={HomeScreen}
-                                options={{ title: 'Home' }}
+                                component={TabNavigator}
+                                options={{
+                                        title: 'Home',
+                                        headerShown: false,
+                                }}
+
                         />
                         <Stack.Screen
                                 name="Details"
@@ -40,6 +46,11 @@ const StackNavigator = () => {
                                 name="Profile"
                                 component={ProfileScreen}
                                 options={{ title: 'My Profile' }}
+                        />
+                        <Stack.Screen
+                                name="Settings"
+                                component={SettingsScreen}
+                                options={{ title: 'My Settings' }}
                         />
                 </Stack.Navigator>
         );

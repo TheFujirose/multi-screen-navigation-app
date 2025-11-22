@@ -15,6 +15,7 @@ const ProfileScreen = ({ navigation }) => {
                         <Text style={styles.text}>User: John Doe</Text>
                         <Text style={styles.text}>Email: john@example.com</Text>
                         <Button title="Go to Home" onPress={() => navigation.navigate('Home')} />
+                        <Button title="Settings" onPress={() => navigation.navigate('Settings')} />
                 </SafeAreaView>
         );
 };

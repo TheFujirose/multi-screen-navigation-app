@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage[a4paper, margin=1in]{geometry} % change margins
+\usepackage{minted} % code highlight and syntax
+\usepackage[dvipdfm]{graphicx} % graphics for images
+\usepackage[T1]{fontenc}
+\usepackage{float} % for [H]
+\begin{document}
+This document is a lab report that documents reflection material 
+
+\section{Software Specifications}
+I am running Fedora Linux 42 (Workstation Edition) with pip (24.3.1) on python (3.13.9). //
+\textit{Note:}During the making of this lab, I upgraded to Fedora Linux 43 (Workstation Edition) and python 3.14.0
+\section{Project and App Setup}
+Lab7 set up required the use of a virtual environment as to not have conflicts with other projects.
+\begin{minted}{bash}
+	python -m venv .venv
+\end{minted}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{./screenshots/initial_error.pdf}
+	\caption{Initial Error \label{fig:a}}
+\end{figure}
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{./screenshots/working_server.pdf}
+	\caption{\label{fig:b}}
+\includegraphics[width=\textwidth]{./screenshots/working_start.pdf}
+	\caption{\label{fig:c}}
+\end{figure}
+
+
+
+\begin{figure}[H]
+	\centering
+	\inputminted[firstline=33,lastline=41]{python}{../project/project/settings.py}
+\end{figure}
+
+then we need to migrate, to create the tables for the applications.
+
+
+\end{document}
