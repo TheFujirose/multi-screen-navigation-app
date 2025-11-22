@@ -6,11 +6,12 @@
  * @license GPL-3.0-or-later
  */
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { Text, TextInput, StyleSheet } from 'react-native';
 const SearchScreen = () => {
         const [searchQuery, setSearchQuery] = useState('');
         return (
-                <View style={styles.container}>
+                <SafeAreaView style={styles.container}>
                         <Text style={styles.title}>Search Screen</Text>
                         <TextInput
                                 style={styles.input}
@@ -19,7 +20,7 @@ const SearchScreen = () => {
                                 onChangeText={setSearchQuery}
                         />
                         <Text style={styles.text}>Searching for: {searchQuery}</Text>
-                </View>
+                </SafeAreaView>
         );
 };
 const styles = StyleSheet.create({

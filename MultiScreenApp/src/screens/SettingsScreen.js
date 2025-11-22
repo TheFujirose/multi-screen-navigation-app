@@ -6,12 +6,13 @@
  * @license GPL-3.0-or-later
  */
 import React from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { View, Text, Switch, StyleSheet } from 'react-native';
 const SettingsScreen = () => {
         const [notificationsEnabled, setNotificationsEnabled] = React.useState(true);
         const [darkModeEnabled, setDarkModeEnabled] = React.useState(false);
         return (
-                <View style={styles.container}>
+                <SafeAreaView style={styles.container}>
                         <Text style={styles.title}>Settings Screen</Text>
                         <View style={styles.settingRow}>
                                 <Text style={styles.settingText}>Notifications</Text>
@@ -27,7 +28,7 @@ const SettingsScreen = () => {
                                         onValueChange={setDarkModeEnabled}
                                 />
                         </View>
-                </View>
+                </SafeAreaView>
         );
 };
 const styles = StyleSheet.create({

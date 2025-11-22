@@ -6,11 +6,12 @@
  * @license GPL-3.0-or-later
  */
 import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { Text, Button, StyleSheet } from 'react-native';
 const DetailsScreen = ({ route, navigation }) => {
         const { itemId, itemName } = route.params;
         return (
-                <View style={styles.container}>
+                <SafeAreaView style={styles.container}>
                         <Text style={styles.title}>Details Screen</Text>
                         <Text style={styles.text}>Item ID: {itemId}</Text>
                         <Text style={styles.text}>Item Name: {itemName}</Text>
@@ -23,7 +24,7 @@ const DetailsScreen = ({ route, navigation }) => {
                                         })
                                 }
                         />
-                </View>
+                </SafeAreaView>
         );
 };
 const styles = StyleSheet.create({

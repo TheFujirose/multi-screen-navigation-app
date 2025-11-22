@@ -6,11 +6,12 @@
  * @license GPL-3.0-or-later
  */
 import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { Text, Button, StyleSheet } from 'react-native';
 
 const HomeScreen = ({ navigation }) => {
         return (
-                <View style={styles.container}>
+                <SafeAreaView style={styles.container}>
                         <Text style={styles.title}>Home Screen</Text>
                         <Button
                                 title="Go to Details"
@@ -25,7 +26,7 @@ const HomeScreen = ({ navigation }) => {
                                 title="Go to Profile"
                                 onPress={() => navigation.navigate('Profile')}
                         />
-                </View>
+                </SafeAreaView>
         );
 };
 const styles = StyleSheet.create({
