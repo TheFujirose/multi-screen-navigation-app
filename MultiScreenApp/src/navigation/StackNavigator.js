@@ -28,12 +28,11 @@ const StackNavigator = () => {
                         }}>
                         <Stack.Screen
                                 name="Home"
-                                component={TabNavigator}
+                                component={TabNavigator} //Nested Tab Navigation
                                 options={{
                                         title: 'Home',
                                         headerShown: false,
                                 }}
-
                         />
                         <Stack.Screen
                                 name="Details"
